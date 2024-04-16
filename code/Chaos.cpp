@@ -22,7 +22,7 @@ int main() {
     vector<Vector2f> vertices;
     vector<Vector2f> points;
 
-    const int POINTS_NUMBER = 10;
+    const int POINTS_NUMBER = 100;
 
     // Text content
     Text askVertextInput;
@@ -77,7 +77,8 @@ int main() {
             ///select random vertex
             ///calculate midpoint between random vertex and the last point in the vector
             ///push back the newly generated coord.
-            while (points.size() <= POINTS_NUMBER) {
+            int count = 0;
+            while (count++ <= POINTS_NUMBER) {
                 int vertexIndex = rand() % 3;
                 cout << "Current vertex index: " << vertexIndex << endl;
                 Vector2f currentVertex = vertices[vertexIndex];
@@ -104,14 +105,14 @@ int main() {
             window.draw(askPointInput);
         }
 
-        for (int i = 0; i < vertices.size(); i++) {
+        for (unsigned int i = 0; i < vertices.size(); i++) {
             RectangleShape rect(Vector2f(10, 10));
             rect.setPosition(Vector2f(vertices[i].x, vertices[i].y));
             rect.setFillColor(Color::Blue);
             window.draw(rect);
         }
 
-        for (int i = 0; i < points.size(); i++) {
+        for (unsigned int i = 0; i < points.size(); i++) {
             CircleShape circle(1);
             circle.setPosition(Vector2f(points[i].x, points[i].y));
             circle.setFillColor(Color::White);
